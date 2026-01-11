@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Started - AI Bazaar</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body, html { height: 100%; overflow: hidden; }
+
+        .auth-layout {
+            height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+        }
+
+        .auth-brand {
+            background-color: #1B4965;
+            /* Added a subtle pattern to make text pop more */
+            background-image:
+                    radial-gradient(at 0% 0%, hsla(203, 70%, 60%, 1) 0, transparent 50%),
+                    radial-gradient(at 100% 100%, hsla(203, 70%, 40%, 1) 0, transparent 50%);
+            color: white;
+            padding: 4rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+        }
+
+        /* --- TEXT STYLES --- */
+        .brand-heading {
+            font-size: 3.5rem;
+            line-height: 1.1;
+            margin-bottom: 0.5rem;
+            font-weight: 800;
+            color: #FFFFFF;
+            text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .brand-subtext {
+            font-size: 1.05rem;
+            color: #94A3B8;
+            line-height: 1.4;
+            font-weight: 400;
+            max-width: 85%;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        /* ------------------ */
+
+        .auth-content {
+            background: #F0F4F8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .auth-card {
+            width: 100%;
+            /* CHANGED FROM 440px TO 420px TO MATCH LOGIN */
+            max-width: 420px;
+            z-index: 10;
+            background: #FFFFFF !important;
+            border: 1px solid #CBD5E1;
+            box-shadow: 0 20px 40px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .input-label {
+            color: #0f172a !important;
+            font-weight: 700 !important;
+            font-size: 0.9rem;
+        }
+
+        .input {
+            background: #FFFFFF !important;
+            border: 1px solid #94A3B8 !important;
+            color: #000000 !important;
+        }
+
+        @media (max-width: 768px) {
+            .auth-layout { grid-template-columns: 1fr; }
+            .auth-brand { display: none; }
+        }
+    </style>
+</head>
+<body>
+<div class="auth-layout">
+    <div class="auth-brand">
+        <h1 class="brand-heading">
+            Built for the <br>
+            <span style="color: #62B6CB;">Modern Retailer.</span>
+        </h1>
+        <p class="brand-subtext">
+            Start your journey to organized, AI-driven shop management today. No credit card required.
+        </p>
+    </div>
+
+    <div class="auth-content">
+        <div class="card auth-card fade-in">
+            <div class="logo mb-4" style="font-size: 1.5rem; color: var(--primary); font-weight: 800;">
+                <i class="fas fa-robot"></i> AI Bazaar
+            </div>
+            <h2 class="heading-card" style="font-size: 1.75rem;">Create Account</h2>
+            <p class="mb-4" style="color: #475569;">Join the elite club of smart vendors.</p>
+
+            <form id="regForm">
+                <div class="input-group">
+                    <label class="input-label">Full Name</label>
+                    <input type="text" class="input" placeholder="John Doe" required id="regName">
+                </div>
+                <div class="input-group">
+                    <label class="input-label">Email Address</label>
+                    <input type="email" class="input" placeholder="name@company.com" required id="regEmail">
+                </div>
+                <div class="input-group">
+                    <label class="input-label">Password</label>
+                    <input type="password" class="input" placeholder="Create a strong password" required id="regPass">
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%; font-weight: 700;">Create Free Account</button>
+
+                <p class="mt-4" style="font-size: 0.75rem; color: #64748B; text-align: center;">
+                    By signing up, you agree to our <a href="#" style="color: var(--primary);">Terms</a> and <a href="#" style="color: var(--primary);">Privacy Policy</a>.
+                </p>
+            </form>
+
+            <p class="mt-4 text-center" style="font-size: 0.875rem; color: #475569;">
+                Already have an account? <a href="login.html" style="color: var(--primary); font-weight: 700; text-decoration: none;">Sign in here</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+<script>
+    const showToast = (msg, type) => {
+        const div = document.createElement('div');
+        div.className = `toast badge-${type === 'error' ? 'error' : 'success'}`;
+        div.style.cssText = `position: fixed; top: 20px; right: 20px; padding: 1rem 2rem; border-radius: 8px; z-index: 9999; background: white; box-shadow: 0 10px 30px rgba(0,0,0,0.1); animation: slideInRight 0.3s ease-out; border-left: 5px solid ${type === 'error' ? 'red' : 'green'};`;
+        div.innerText = msg;
+        document.body.appendChild(div);
+        setTimeout(() => div.remove(), 3000);
+    }
+
+    document.getElementById('regForm').onsubmit = (e) => {
+        e.preventDefault();
+        const btn = e.target.querySelector('button');
+        btn.innerText = 'Creating account...';
+        btn.style.opacity = '0.7';
+        setTimeout(() => {
+            showToast("Account created successfully!", "success");
+            window.location.href = 'index.html';
+        }, 1000);
+    };
+</script>
+</body>
+</html>

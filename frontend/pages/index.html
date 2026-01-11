@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Bazaar - Your AI Shop Copilot</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Local overrides for specific landing page needs */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a:not(.btn) {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-links a:not(.btn):hover {
+            color: var(--primary);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Hero Specifics */
+        .hero {
+            padding: 8rem 0 6rem;
+            text-align: center;
+            overflow: hidden;
+            position: relative;
+
+            /* The simplified path */
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Decorative background blobs */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -10%;
+            right: -5%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, var(--primary-subtle) 0%, transparent 70%);
+            opacity: 0.5;
+            z-index: -1;
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg-main);
+            border-radius: var(--radius-full);
+        }
+
+        /* Footer Modernization */
+        .modern-footer {
+            background: #0F172A;
+            color: #E2E8F0;
+            padding-top: 5rem;
+            padding-bottom: 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 4rem;
+            margin-bottom: 4rem;
+        }
+
+        .footer-links ul { list-style: none; }
+        .footer-links li { margin-bottom: 0.8rem; }
+        .footer-links a { color: #94A3B8; text-decoration: none; transition: 0.2s; }
+        .footer-links a:hover { color: #fff; }
+
+        @media (max-width: 992px) {
+            .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .hero { padding: 4rem 0; }
+        }
+    </style>
+</head>
+
+<body>
+<nav class="navbar">
+    <div class="container nav-content">
+        <a href="index.html" class="logo">
+            <i class="fas fa-robot"></i> AI Bazaar
+        </a>
+        <div class="nav-links">
+            <a href="#features">Features</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+            <a href="login.html">Log In</a>
+            <a href="register.html" class="btn btn-primary">Try Free</a>
+        </div>
+    </div>
+</nav>
+
+<header class="hero">
+    <div class="container">
+        <h1 class="heading-hero fade-in">Your AI Copilot for <br> Modern Retail</h1>
+        <p class="mb-4 fade-in" style="max-width: 600px; margin: 1.5rem auto;">
+            The smartest way to manage inventory, sales, and billing with simple voice commands.
+            Experience the future of local retail today.
+        </p>
+        <div class="flex-center gap-4 fade-in" style="gap: 1rem;">
+            <a href="upload.html" class="btn btn-primary">Get Started Free</a>
+        </div>
+    </div>
+</header>
+
+<section id="features" style="padding: 5rem 0;">
+    <div class="container">
+        <div class="text-center mb-4">
+            <h2 class="heading-section reveal">Powerful Features</h2>
+            <p class="reveal">Everything you need to run your shop efficiently.</p>
+        </div>
+
+        <div class="grid grid-3">
+            <div class="card reveal">
+                <div class="feature-icon"><i class="fas fa-microphone"></i></div>
+                <h3>Voice Operations</h3>
+                <p>Add items and generate bills just by speaking. Supports Hindi, English, and Hinglish.</p>
+            </div>
+            <div class="card reveal">
+                <div class="feature-icon"><i class="fas fa-chart-pie"></i></div>
+                <h3>Smart Analytics</h3>
+                <p>AI predicts your stock needs and tracks your most profitable hours automatically.</p>
+            </div>
+            <div class="card reveal">
+                <div class="feature-icon"><i class="fab fa-whatsapp"></i></div>
+                <h3>Auto GST Invoices</h3>
+                <p>Compliant billing sent directly to customers via WhatsApp in seconds.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="about" style="padding: 5rem 0; background: var(--bg-main);">
+    <div class="container grid grid-2" style="align-items: center;">
+        <div class="reveal">
+            <div class="reveal">
+                <img src="http://googleusercontent.com/image_collection/image_retrieval/3127603022415148836_0" alt="AI Copilot Smart Retail" class="float-anim" style="width: 100%; max-width: 500px; border-radius: 16px; box-shadow: 0 20px 40px rgba(27, 73, 101, 0.15);">
+            </div>
+        </div>
+        <div class="reveal">
+            <span class="badge badge-success mb-4">About Us</span>
+            <h2 class="heading-section">Your Intelligent Business Partner</h2>
+            <p class="mb-4">
+                AI Bazaar isn't just a POS system—it's your <strong>AI Copilot</strong>. Designed specifically for small vendors, we bridge the gap between traditional retail and cutting-edge technology.
+            </p>
+            <div class="grid grid-3">
+                <div>
+                    <h4 style="font-size: 2rem; color: var(--primary);">25k+</h4>
+                    <span style="font-size: 0.9rem; color: var(--text-muted);">Active Shops</span>
+                </div>
+                <div>
+                    <h4 style="font-size: 2rem; color: var(--primary);">99%</h4>
+                    <span style="font-size: 0.9rem; color: var(--text-muted);">Accuracy</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="contact" style="padding: 5rem 0;">
+    <div class="container">
+        <div class="card grid grid-2 reveal" style="padding: 3rem; background: linear-gradient(135deg, #fff 0%, #f8fafc 100%);">
+            <div>
+                <h2 class="heading-section">Get in Touch</h2>
+                <p class="mb-4">Modernize your business today. Our team is ready to help you set up.</p>
+                <div style="display: flex; flex-direction: column; gap: 1rem;">
+                    <div class="flex-center" style="justify-content: start; gap: 1rem;">
+                        <i class="fas fa-envelope" style="color: var(--primary);"></i> aibazaar@gmail.com
+                    </div>
+                    <div class="flex-center" style="justify-content: start; gap: 1rem;">
+                        <i class="fas fa-map-marker-alt" style="color: var(--primary);"></i> Indore, MP, India
+                    </div>
+                </div>
+            </div>
+            <form class="grid" style="gap: 1rem;">
+                <div class="input-group mb-0">
+                    <input type="text" class="input" placeholder="Full Name">
+                </div>
+                <div class="input-group mb-0">
+                    <input type="email" class="input" placeholder="Work Email">
+                </div>
+                <button class="btn btn-primary w-full">Send Inquiry</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<footer class="modern-footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div>
+                <div class="logo" style="color: #fff; margin-bottom: 1.5rem;">
+                    <i class="fas fa-robot"></i> AI Bazaar
+                </div>
+                <p style="color: #94A3B8;">The world's most intuitive voice-powered management system for the retail industry.</p>
+            </div>
+            <div class="footer-links">
+                <h4 style="color: #fff; margin-bottom: 1.5rem;">Product</h4>
+                <ul>
+                    <li><a href="#">Voice Billing</a></li>
+                    <li><a href="#">Inventory</a></li>
+                    <li><a href="#">Pricing</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4 style="color: #fff; margin-bottom: 1.5rem;">Company</h4>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4 style="color: #fff; margin-bottom: 1.5rem;">Newsletter</h4>
+                <div style="display: flex; gap: 0.5rem;">
+                    <input type="email" class="input" placeholder="Email" style="background: rgba(255,255,255,0.1); border: none; color: white;">
+                    <button class="btn btn-primary">Go</button>
+                </div>
+            </div>
+        </div>
+        <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem; text-align: center; color: #64748B; font-size: 0.875rem;">
+            &copy; 2026 AI Bazaar Software Pvt Ltd. All rights reserved.
+        </div>
+    </div>
+</footer>
+
+<script>
+    function reveal() {
+        var reveals = document.querySelectorAll(".reveal");
+        for (var i = 0; i < reveals.length; i++) {
+            var windowHeight = window.innerHeight;
+            var elementTop = reveals[i].getBoundingClientRect().top;
+            var elementVisible = 150;
+            if (elementTop < windowHeight - elementVisible) {
+                reveals[i].classList.add("active");
+            }
+        }
+    }
+    window.addEventListener("scroll", reveal);
+    // Trigger once on load
+    reveal();
+</script>
+</body>
+</html>

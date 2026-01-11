@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voice Assistant - AI Bazaar</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Shared Styles */
+        body { background-color: #F0F4F8; overflow: hidden; height: 100vh; }
+        .dashboard-wrapper { display: flex; height: 100vh; width: 100%; }
+
+        .sidebar { width: 260px; background: #1B4965; color: white; display: flex; flex-direction: column; flex-shrink: 0; z-index: 10; }
+        .sidebar-header { padding: 1.5rem 2rem; display: flex; align-items: center; gap: 0.75rem; height: 70px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .sidebar-brand { font-size: 1.4rem; font-weight: 800; }
+        .nav-scroll { flex: 1; overflow-y: auto; padding: 1.5rem 1rem; }
+        .nav-link { display: flex; align-items: center; gap: 1rem; padding: 0.8rem 1rem; color: rgba(255,255,255,0.75); text-decoration: none; border-radius: 8px; margin-bottom: 0.25rem; font-size: 0.95rem; transition: 0.2s; }
+        .nav-link:hover { background: rgba(255,255,255,0.1); color: white; }
+        .nav-link.active { background: #5FA8D3; color: white; font-weight: 600; box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+        .nav-icon { width: 20px; text-align: center; }
+
+        .main-content { flex: 1; overflow-y: auto; padding: 2rem; }
+        .dashboard-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; }
+
+        /* Voice Specific */
+        .voice-container {
+            max-width: 600px; margin: 0 auto; text-align: center; padding-top: 3rem;
+        }
+
+        .mic-btn {
+            width: 100px; height: 100px; background: #1B4965; border-radius: 50%; color: white; font-size: 2.5rem; display: flex; align-items: center; justify-content: center; margin: 0 auto 2rem; cursor: pointer; transition: all 0.3s; box-shadow: 0 10px 25px rgba(27, 73, 101, 0.3);
+        }
+        .mic-btn:hover { transform: scale(1.1); }
+        .mic-btn.listening { animation: pulse 1.5s infinite; background: #EF4444; }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
+            70% { box-shadow: 0 0 0 20px rgba(239, 68, 68, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+        }
+
+        .visualizer {
+            display: flex; justify-content: center; gap: 5px; height: 40px; margin-bottom: 2rem; opacity: 0; transition: 0.3s;
+        }
+        .visualizer.active { opacity: 1; }
+        .bar { width: 6px; background: #EF4444; border-radius: 3px; animation: sound 0.5s infinite alternate; }
+
+        @keyframes sound {
+            0% { height: 5px; opacity: 0.5; }
+            100% { height: 40px; opacity: 1; }
+        }
+
+        .transcript-box {
+            background: white; border: 1px solid #E2E8F0; padding: 2rem; border-radius: 12px; font-size: 1.1rem; color: #64748B; font-style: italic; min-height: 100px; display: flex; align-items: center; justify-content: center; margin-bottom: 2rem; box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .hint-chip {
+            background: #E0F2FE; color: #0284C7; padding: 8px 16px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: 0.2s;
+        }
+        .hint-chip:hover { background: #0284C7; color: white; }
+    </style>
+</head>
+
+<body>
+<div class="dashboard-wrapper">
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <i class="fas fa-robot fa-lg"></i>
+            <div class="sidebar-brand">AI Bazaar</div>
+        </div>
+        <nav class="nav-scroll">
+            <a href="dashboard.html" class="nav-link">
+                <i class="fas fa-chart-pie nav-icon"></i> <span>Overview</span>
+            </a>
+            <a href="inventory.html" class="nav-link">
+                <i class="fas fa-box nav-icon"></i> <span>Inventory</span>
+            </a>
+            <a href="sales.html" class="nav-link">
+                <i class="fas fa-shopping-cart nav-icon"></i> <span>Sales</span>
+            </a>
+            <a href="reports.html" class="nav-link">
+                <i class="fas fa-file-invoice-dollar nav-icon"></i> <span>Reports</span>
+            </a>
+            <a href="voice-assistant.html" class="nav-link active">
+                <i class="fas fa-microphone nav-icon"></i> <span>AI Assistant</span>
+            </a>
+            <a href="settings.html" class="nav-link">
+                <i class="fas fa-cog nav-icon"></i> <span>Settings</span>
+            </a>
+            <div style="margin-top: 2rem;">
+                <button onclick="window.location.href='login.html'" class="btn" style="width: 100%; justify-content: start; color: #FCA5A5; background: rgba(255,255,255,0.05); border: none;">
+                    <i class="fas fa-sign-out-alt nav-icon"></i> Logout
+                </button>
+            </div>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+        <header class="dashboard-header">
+            <div>
+                <h1 style="font-size: 1.5rem; font-weight: 700; color: #0F172A; margin: 0;">AI Voice Copilot</h1>
+                <p style="color: #64748B; margin: 5px 0 0 0; font-size: 0.9rem;">Speak naturally to manage your shop.</p>
+            </div>
+        </header>
+
+        <div class="dashboard-content fade-in">
+            <div class="voice-container">
+                <div id="micBtn" class="mic-btn">
+                    <i class="fas fa-microphone"></i>
+                </div>
+
+                <div id="visualizer" class="visualizer">
+                    <div class="bar" style="animation-delay: 0s"></div>
+                    <div class="bar" style="animation-delay: 0.1s"></div>
+                    <div class="bar" style="animation-delay: 0.2s"></div>
+                    <div class="bar" style="animation-delay: 0.3s"></div>
+                    <div class="bar" style="animation-delay: 0.4s"></div>
+                </div>
+
+                <div id="transcript" class="transcript-box">
+                    "Tap the microphone and say something like 'Total sales today'..."
+                </div>
+
+                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                    <div class="hint-chip" onclick="simulate('Show low stock items')">"Show low stock"</div>
+                    <div class="hint-chip" onclick="simulate('Add 500 rupees sale')">"Record sales"</div>
+                    <div class="hint-chip" onclick="simulate('What is my revenue?')">"Check revenue"</div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+<script src="../assets/js/utils.js"></script>
+<script src="../assets/js/auth.js"></script>
+<script>
+    // auth.requireAuth();
+
+    const mic = document.getElementById('micBtn');
+    const visualizer = document.getElementById('visualizer');
+    const transcript = document.getElementById('transcript');
+    let isListening = false;
+
+    mic.onclick = () => {
+        isListening = !isListening;
+        if (isListening) {
+            mic.classList.add('listening');
+            visualizer.classList.add('active');
+            transcript.textContent = "Listening...";
+            transcript.style.color = "#1B4965";
+        } else {
+            stop();
+        }
+    };
+
+    function stop() {
+        mic.classList.remove('listening');
+        visualizer.classList.remove('active');
+        isListening = false;
+    }
+
+    function simulate(text) {
+        stop();
+        transcript.textContent = `Processing: "${text}"...`;
+        setTimeout(() => {
+            // utils.showToast("Command executed!", "success"); // Assuming utils exists
+            transcript.textContent = `Done! Result for "${text}" shown below.`;
+            transcript.style.color = "#10B981";
+        }, 1000);
+    }
+</script>
+</body>
+</html>

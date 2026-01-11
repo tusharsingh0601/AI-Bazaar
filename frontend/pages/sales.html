@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sales - AI Bazaar</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Shared Styles */
+        body { background-color: #F0F4F8; overflow: hidden; height: 100vh; }
+        .dashboard-wrapper { display: flex; height: 100vh; width: 100%; }
+
+        .sidebar {
+            width: 260px; background: #1B4965; color: white; display: flex; flex-direction: column; flex-shrink: 0; z-index: 10;
+        }
+        .sidebar-header { padding: 1.5rem 2rem; display: flex; align-items: center; gap: 0.75rem; height: 70px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .sidebar-brand { font-size: 1.4rem; font-weight: 800; }
+        .nav-scroll { flex: 1; overflow-y: auto; padding: 1.5rem 1rem; }
+        .nav-link { display: flex; align-items: center; gap: 1rem; padding: 0.8rem 1rem; color: rgba(255,255,255,0.75); text-decoration: none; border-radius: 8px; margin-bottom: 0.25rem; font-size: 0.95rem; transition: 0.2s; }
+        .nav-link:hover { background: rgba(255,255,255,0.1); color: white; }
+        .nav-link.active { background: #5FA8D3; color: white; font-weight: 600; box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+        .nav-icon { width: 20px; text-align: center; }
+
+        .main-content { flex: 1; overflow-y: auto; padding: 2rem; }
+        .dashboard-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; }
+
+        /* Sales Specific */
+        .stat-card { background: white; border-radius: 12px; padding: 1.5rem; box-shadow: 0 2px 4px rgba(0,0,0,0.05); border: 1px solid #E2E8F0; display: flex; flex-direction: column; justify-content: space-between; height: 100%; }
+        .stat-label { font-size: 0.875rem; color: #64748B; margin-bottom: 0.5rem; }
+        .stat-value { font-size: 2rem; font-weight: 800; color: #1B4965; }
+
+        .table-container { background: white; border-radius: 12px; padding: 1.5rem; box-shadow: 0 2px 4px rgba(0,0,0,0.05); border: 1px solid #E2E8F0; overflow-x: auto; }
+        .table-header { margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center; }
+
+        table { width: 100%; border-collapse: collapse; min-width: 700px; }
+        th { text-align: left; padding: 1rem; border-bottom: 2px solid #F1F5F9; color: #64748B; font-size: 0.8rem; text-transform: uppercase; font-weight: 700; }
+        td { padding: 1rem; border-bottom: 1px solid #F1F5F9; color: #334155; vertical-align: middle; }
+        tr:last-child td { border-bottom: none; }
+    </style>
+</head>
+
+<body>
+<div class="dashboard-wrapper">
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <i class="fas fa-robot fa-lg"></i>
+            <div class="sidebar-brand">AI Bazaar</div>
+        </div>
+        <nav class="nav-scroll">
+            <a href="dashboard.html" class="nav-link">
+                <i class="fas fa-chart-pie nav-icon"></i> <span>Overview</span>
+            </a>
+            <a href="inventory.html" class="nav-link">
+                <i class="fas fa-box nav-icon"></i> <span>Inventory</span>
+            </a>
+            <a href="sales.html" class="nav-link active">
+                <i class="fas fa-shopping-cart nav-icon"></i> <span>Sales</span>
+            </a>
+            <a href="reports.html" class="nav-link">
+                <i class="fas fa-file-invoice-dollar nav-icon"></i> <span>Reports</span>
+            </a>
+            <a href="voice-assistant.html" class="nav-link">
+                <i class="fas fa-microphone nav-icon"></i> <span>AI Assistant</span>
+            </a>
+            <a href="settings.html" class="nav-link">
+                <i class="fas fa-cog nav-icon"></i> <span>Settings</span>
+            </a>
+            <div style="margin-top: 2rem;">
+                <button onclick="window.location.href='login.html'" class="btn" style="width: 100%; justify-content: start; color: #FCA5A5; background: rgba(255,255,255,0.05); border: none;">
+                    <i class="fas fa-sign-out-alt nav-icon"></i> Logout
+                </button>
+            </div>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+        <header class="dashboard-header">
+            <div>
+                <h1 style="font-size: 1.5rem; font-weight: 700; color: #0F172A; margin: 0;">Sales Transactions</h1>
+                <p style="color: #64748B; margin: 5px 0 0 0; font-size: 0.9rem;">View and manage your order history.</p>
+            </div>
+            <button class="btn btn-primary">
+                <i class="fas fa-plus"></i> New Transaction
+            </button>
+        </header>
+
+        <div class="dashboard-content fade-in">
+            <div class="grid grid-3 mb-4">
+                <div class="stat-card">
+                    <div>
+                        <div class="stat-label">Daily Revenue</div>
+                        <div class="stat-value">₹45,200</div>
+                    </div>
+                    <div class="badge badge-success" style="width: fit-content; margin-top: 10px;">
+                        <i class="fas fa-arrow-up"></i> 15% vs yesterday
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div>
+                        <div class="stat-label">Total Transactions</div>
+                        <div class="stat-value">32</div>
+                    </div>
+                    <div class="badge badge-success" style="width: fit-content; margin-top: 10px;">
+                        <i class="fas fa-arrow-up"></i> +4 today
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div>
+                        <div class="stat-label">Avg. Ticket Size</div>
+                        <div class="stat-value">₹1,412</div>
+                    </div>
+                    <div class="badge badge-warning" style="width: fit-content; margin-top: 10px;">
+                        <i class="fas fa-minus"></i> Stable
+                    </div>
+                </div>
+            </div>
+
+            <div class="table-container">
+                <div class="table-header">
+                    <h3 class="heading-card" style="margin:0; font-size: 1.1rem; color: #0F172A;">Order History</h3>
+                    <div class="flex-center gap-2" style="gap: 0.5rem;">
+                        <div style="position: relative;">
+                            <i class="fas fa-search" style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%); color: #94A3B8;"></i>
+                            <input type="text" class="input" placeholder="Search orders..." style="width: 250px; padding-left: 2rem;">
+                        </div>
+                        <button class="btn btn-secondary btn-sm"><i class="fas fa-filter"></i> Filter</button>
+                    </div>
+                </div>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Order Ref</th>
+                        <th>Customer Name</th>
+                        <th>Date & Time</th>
+                        <th>Type</th>
+                        <th>Amount</th>
+                        <th>Status</th>
+                        <th style="text-align: right;">Action</th>
+                    </tr>
+                    </thead>
+                    <tbody id="salesTable">
+                    <tr>
+                        <td><span style="font-weight: 600; font-family: monospace; color: #1B4965;">#SR-0042</span></td>
+                        <td>Rahul Gupta</td>
+                        <td>
+                            <div>Jan 07, 2026</div>
+                            <div style="font-size: 0.75rem; color: #94A3B8;">10:30 AM</div>
+                        </td>
+                        <td><span class="badge" style="background: #F1F5F9; color: #475569;">Walk-in</span></td>
+                        <td><span style="font-weight: 700;">₹2,450</span></td>
+                        <td><span class="badge badge-success">Paid</span></td>
+                        <td style="text-align: right;">
+                            <button class="btn btn-ghost btn-sm">View</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span style="font-weight: 600; font-family: monospace; color: #1B4965;">#SR-0043</span></td>
+                        <td>Sneha Patil</td>
+                        <td>
+                            <div>Jan 07, 2026</div>
+                            <div style="font-size: 0.75rem; color: #94A3B8;">11:15 AM</div>
+                        </td>
+                        <td><span class="badge" style="background: #F1F5F9; color: #475569;">Online</span></td>
+                        <td><span style="font-weight: 700;">₹5,200</span></td>
+                        <td><span class="badge badge-warning">Processing</span></td>
+                        <td style="text-align: right;">
+                            <button class="btn btn-ghost btn-sm">View</button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+</div>
+
+<script src="../assets/js/utils.js"></script>
+<script src="../assets/js/auth.js"></script>
+</body>
+</html>

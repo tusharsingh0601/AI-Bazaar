@@ -1,0 +1,343 @@
+/* AI Bazaar - SaaS Design System (Enhanced)
+   Style: Modern Professional, Glassmorphism, Deep Depth
+*/
+
+:root {
+  /* Brand Colors */
+  --primary: #1B4965;
+  --primary-rgb: 27, 73, 101; /* Added for transparency effects */
+  --primary-light: #5FA8D3;
+  --primary-subtle: #CAE9FF;
+  --secondary: #62B6CB;
+  --accent: #FFD166; /* Added for subtle highlights */
+
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, #1B4965 0%, #2A6F97 100%);
+  --gradient-hover: linear-gradient(135deg, #2A6F97 0%, #1B4965 100%);
+  --gradient-glow: linear-gradient(135deg, rgba(95, 168, 211, 0.2) 0%, rgba(98, 182, 203, 0.2) 100%);
+
+  /* Functional Colors */
+  --success: #10B981;
+  --warning: #F59E0B;
+  --error: #EF4444;
+  --info: #3B82F6;
+
+  /* Neutrals */
+  --bg-main: #F0F4F8; /* Slightly cooler grey */
+  --bg-card: rgba(255, 255, 255, 0.85); /* Transparent for glass effect */
+  --text-main: #0F172A; /* Darker, sharper text */
+  --text-muted: #64748B;
+  --text-white: #FFFFFF;
+  --border: #E2E8F0;
+  --border-focus: #5FA8D3;
+
+  /* Layout */
+  --radius-sm: 6px;
+  --radius-md: 10px; /* Slightly rounder for modern look */
+  --radius-lg: 16px;
+  --radius-full: 9999px;
+
+  /* Effects */
+  --shadow-sm: 0 2px 4px rgb(27 73 101 / 0.05);
+  --shadow-md: 0 8px 16px rgb(27 73 101 / 0.08);
+  --shadow-lg: 0 16px 32px rgb(27 73 101 / 0.12);
+  --shadow-glow: 0 0 15px rgba(95, 168, 211, 0.4);
+  --glass-border: 1px solid rgba(255, 255, 255, 0.6);
+
+  --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); /* Smoother bounce */
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  color: var(--text-main);
+  background-color: var(--bg-main);
+  /* Added a subtle mesh pattern for professionalism */
+  background-image:
+          radial-gradient(at 0% 0%, hsla(203, 70%, 94%, 1) 0, transparent 50%),
+          radial-gradient(at 100% 0%, hsla(195, 52%, 92%, 1) 0, transparent 50%);
+  background-attachment: fixed;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Typography */
+h1, h2, h3, h4, .heading {
+  color: var(--primary);
+  font-weight: 800; /* Bolder headings */
+  letter-spacing: -0.03em; /* Tighter tracking looks more premium */
+}
+
+.hero {
+  /* ... other styles ... */
+  background-image: url('assets/images/vecteezy_digital-learning-and-science-web-banner-flat-illustration_66163758.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.heading-hero {
+  font-size: 4rem;
+  line-height: 1.1;
+  /* Text Gradient for Hero */
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.heading-section {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.heading-card {
+  font-size: 1.25rem;
+  margin-bottom: 0.75rem;
+}
+
+p {
+  color: var(--text-muted);
+  font-size: 1.05rem; /* Slightly larger for readability */
+}
+
+/* Containers */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: var(--transition);
+  border: 1px solid transparent;
+  gap: 0.5rem;
+  letter-spacing: 0.01em;
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background: var(--gradient-primary);
+  color: var(--text-white);
+  box-shadow: 0 4px 6px rgba(27, 73, 101, 0.2);
+}
+
+.btn-primary:hover {
+  background: var(--gradient-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 12px rgba(27, 73, 101, 0.3);
+}
+
+.btn-secondary {
+  background-color: var(--bg-card);
+  border-color: var(--border);
+  color: var(--primary);
+  backdrop-filter: blur(4px);
+}
+
+.btn-secondary:hover {
+  background-color: #fff;
+  border-color: var(--primary-light);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--primary);
+}
+
+.btn-ghost:hover {
+  background: var(--primary-subtle);
+  color: var(--primary);
+}
+
+/* Inputs */
+.input-group {
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.input-label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--text-main);
+}
+
+.input {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.9);
+  transition: var(--transition);
+  font-size: 0.95rem;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--primary-light);
+  background: #fff;
+  box-shadow: 0 0 0 4px var(--primary-subtle);
+  transform: translateY(-1px);
+}
+
+/* Cards (Enhanced with Glassmorphism) */
+.card {
+  background: var(--bg-card);
+  border: var(--glass-border);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+  /* Glassmorphism Effect */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-5px);
+  border-color: var(--primary-subtle);
+}
+
+/* Badges */
+.badge {
+  display: inline-flex;
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.badge-success {
+  background: #DCFCE7;
+  color: #166534;
+  border: 1px solid #bbf7d0;
+}
+
+.badge-warning {
+  background: #FEF3C7;
+  color: #92400E;
+  border: 1px solid #fde68a;
+}
+
+.badge-error {
+  background: #FEE2E2;
+  color: #991B1B;
+  border: 1px solid #fecaca;
+}
+
+/* Utilities */
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.grid {
+  display: grid;
+  gap: 2rem; /* Increased gap for cleaner layout */
+}
+
+.grid-2 { grid-template-columns: repeat(2, 1fr); }
+.grid-3 { grid-template-columns: repeat(3, 1fr); }
+.grid-4 { grid-template-columns: repeat(4, 1fr); }
+
+.mt-4 { margin-top: 1.5rem; }
+.mb-4 { margin-bottom: 1.5rem; }
+
+/* Animation States */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Floating Animation */
+.float-anim {
+  animation: floating 4s ease-in-out infinite; /* Slower, more elegant float */
+}
+
+@keyframes floating {
+  0% { transform: translate(0, 0px); }
+  50% { transform: translate(0, -12px); }
+  100% { transform: translate(0, 0px); }
+}
+
+.fade-in {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Toast Notifications */
+.toast-container {
+  position: fixed;
+  top: 2rem;
+  right: 2rem;
+  z-index: 9999;
+}
+
+.toast {
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--primary);
+  padding: 1rem 1.5rem;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  min-width: 320px;
+  backdrop-filter: blur(8px);
+  animation: slideInRight 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Bouncy entrance */
+}
+
+@keyframes slideInRight {
+  from { transform: translateX(120%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .heading-hero { font-size: 2.5rem; }
+  .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+  .container { padding: 0 1rem; }
+}
